@@ -1,2 +1,20 @@
-export const BASE_URL = 'https://travel-agency-rngy.onrender.com'
-// export const BASE_URL = 'http://mern-travel-booking-api.vercel.app/'
+
+
+import axios from "axios";
+
+const baseURLs = {
+  development: "http://localhost:3001/api/v1",
+  production: "https://travel-agency-rngy.onrender.com",
+};
+
+const baseURL =
+  process.env.NODE_ENV === "production"
+    ? baseURLs.production
+    : baseURLs.development;
+
+export default axios.create({
+  baseURL,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
